@@ -1,6 +1,7 @@
 # Given a string s containing just the characters '(', ')', '{', '}', '[' and ']'
 # Determine if the input string is valid.
 
+#CURRENTLY PASSES 90%
 class Solution(object):
     def isValid(self, s):
         correct = False #order flag
@@ -19,10 +20,26 @@ class Solution(object):
         
         while i < len(s)/2: #no need for ceiling because no odd len
             if s[i] in openParen:
-                print(s[i], " open found in string")
-                if s[j - i] in closeParen:
-                    print(s[j - i], "closed found in string")
-            
+                index = openParen.index(s[i])
+                print(index)
+                #print(s[i], " open found in string")
+                if s[i+1] in closeParen:
+                    print("immediate closing")
+                    if s[i+1] == closeParen[index]:
+                        correct = True
+                    else:
+                        return False
+                elif s[j - i] in closeParen:
+                    if s[j-i] == closeParen[index]:
+                        print("correct index, is amtch")
+                    #print(s[j - i], "closed found in string")
+                        correct = True
+                    else:
+                        print("incorrect index, not match")
+                        return False
+            else:
+                print('false end')
+                return False
             i+=1
         
         return correct
@@ -30,4 +47,3 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        
