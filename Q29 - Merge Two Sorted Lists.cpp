@@ -11,11 +11,49 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
- 
-// Runtime: -ms, Space: -mb
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         
+        /*
+        cout << l1->val << endl;
+        l1 = l1->next;
+        cout << l1->val << endl; 
+        
+        l1 = l1->next;
+        cout << l1->val << endl;
+        
+        l1 = l1->next;
+        cout << l1->val << endl;  
+        
+        
+        */
+     
+        ListNode l3; // not pointer so must use .val .next
+     //   cout << "List 3: " << l3.val << endl;  
+        
+        while (l1 != NULL){
+            cout << "List 1: " << l1->val << endl;  
+            cout << "List 2: " << l2->val << endl;  
+
+            if (l1->val <= l2->val) {
+                l3.val = l1->val;
+            } else {
+                l3.val = l2->val;
+            }
+            
+            l3.next;
+            
+            l1 = l1->next;
+            l2 = l2->next;
+        
+        }
+       
+        /* while (l3 != NULL){
+            cout << "List 3: " << l3.val << endl; 
+            l3 = l3->next;
+        } */
+        
+        return 0;
     }
 };
