@@ -11,49 +11,55 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         
-        /*
-        cout << l1->val << endl;
-        l1 = l1->next;
-        cout << l1->val << endl; 
+        ListNode* l3 = new ListNode(); // not pointer so must use .val .next
         
-        l1 = l1->next;
-        cout << l1->val << endl;
-        
-        l1 = l1->next;
-        cout << l1->val << endl;  
-        
-        
-        */
-     
-        ListNode l3; // not pointer so must use .val .next
-     //   cout << "List 3: " << l3.val << endl;  
-        
-        while (l1 != NULL){
+        while ((l1 != NULL) && (l2 != NULL)) {
             cout << "List 1: " << l1->val << endl;  
             cout << "List 2: " << l2->val << endl;  
 
-            if (l1->val <= l2->val) {
-                l3.val = l1->val;
+            if (l2->val <= l1->val) {                
+                if (l3->val == NULL) {
+                    cout << "initializing l3, is null" << endl;
+                    l3 = l2;
+                } else {
+                    l3->next = l2; // adds to l3 head (single ll so cannot move)
+                    cout << "adding: " << l2->val << " to end of l3" << endl;
+                }
+
+                l2 = l2->next;
+                // l3->val = l1->val; // update l3 val
             } else {
-                l3.val = l2->val;
+                //ListNode* tempNode = new ListNode();
+                //tempNode->val = l1->val; //l1 val is greater than l2 val
+                //tempNode->next = l2; // append l2 list to end of tempNode
+                //l3->next = tempNode; // update l3
+
+                if (l3->val == NULL) {
+                    cout << "initializing l3, is null" << endl;
+                    l3 = l1;
+                } else {
+                    l3->next = l1; // adds to l3 head (single ll so cannot move)
+                    cout << "adding: " << l1->val << " to end of l3" << endl;
+                }
+                
+                l1 = l1->next;
             }
-            
-            l3.next;
-            
-            l1 = l1->next;
-            l2 = l2->next;
-        
+                        
         }
-       
-        /* while (l3 != NULL){
-            cout << "List 3: " << l3.val << endl; 
-            l3 = l3->next;
-        } */
         
-        return 0;
+       /*
+        while (l3 != NULL){
+            cout << "List 3: " << l3->val << endl; 
+            l3 = l3->next;
+        }
+        */
+        
+        return l3;
     }
+    
 };
