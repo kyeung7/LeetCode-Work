@@ -24,12 +24,4 @@ class Solution(object):
                     return nums.index(i) + 1
             return 0
     
-        #index = 0
-        #for i in nums:
-            
-           # if i == target:
-           #     print(i, "found in nums")
-           #     print("index is at: ", index)
-           # index += 1
-            
 
